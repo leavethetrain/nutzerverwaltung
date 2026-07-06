@@ -1,18 +1,25 @@
 import { Link, Outlet } from "react-router-dom";
 import "./root.css";
+import { Button } from "@mui/material";
 
 function Root() {
   return (
     <div className="root-body">
       <nav className="sidebar-container">
         <Link to="overview">
-          <button className="sidebar-item">Übersicht</button>
+          <Button variant="contained" className="sidebar-item button">
+            Übersicht
+          </Button>
         </Link>
         <Link to="create">
-          <button className="sidebar-item">Erstellen</button>
+          <Button variant="contained" className="sidebar-item button">
+            Erstellen
+          </Button>
         </Link>
         <Link to="edit">
-          <button>Bearbeiten</button>
+          <Button variant="contained" className="sidebar-item button">
+            Bearbeiten
+          </Button>
         </Link>
       </nav>
       <main className="main-content">
