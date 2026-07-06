@@ -2,24 +2,25 @@
   display: flex;
   width: 100%;
   height: 100vh;
+  background-color: var(--background);
 }
 
 .sidebar-container {
   display: flex;
   flex-direction: column;
   align-items: start;
-  justify-content: start;
-  border: 1px solid black;
+  border-right: 1px solid var(--border);
   width: 360px;
   gap: 0.5rem;
+  padding: 1rem;
 }
 
 .main-content {
-  border: 1px solid black;
   width: 100%;
-  background-color: yellow;
+  background-color: var(--background);
 }
 
-.button {
-  width: 360px;
+.button.MuiButton-contained {
+  width: 350px;
+  border-radius: 10px;
 }

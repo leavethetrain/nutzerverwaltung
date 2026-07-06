@@ -1,5 +1,7 @@
 import "./create.css";
 
+import Button from "@mui/material/Button";
+
 function Create() {
   return (
     <form className="form">
@@ -13,7 +15,7 @@ function Create() {
           required
         />
       </div>
-      <div>
+      <div className="form-divs">
         <label htmlFor="lastName">Nachname</label>
         <input
           type="text"
@@ -24,12 +26,12 @@ function Create() {
         />
       </div>
 
-      <div>
+      <div className="form-divs">
         <label htmlFor="birthDate">Geburtsdatum</label>
         <input type="date" id="birthDate" name="birthDate" required />
       </div>
-      <div>
-        <label htmlFor="gender">Geburtsdatum</label>
+      <div className="form-divs">
+        <label htmlFor="gender">Geschlecht</label>
         <select id="gender" name="gender" required>
           <option value="">Bitte auswählen</option>
           <option value="male">Männlich</option>
@@ -38,7 +40,7 @@ function Create() {
         </select>
       </div>
 
-      <div>
+      <div className="form-divs">
         <label htmlFor="phoneNumber">Telefonnummer</label>
         <input
           type="tel"
@@ -48,7 +50,7 @@ function Create() {
           pattern="[0-9+\s-]+"
         />
       </div>
-      <div>
+      <div className="form-divs">
         <label htmlFor="email">E-mail</label>
         <input
           type="email"
@@ -59,7 +61,9 @@ function Create() {
         />
       </div>
 
-      <button type="submit">Speichern</button>
+      <Button className="submit-button" variant="contained" type="submit">
+        Speichern
+      </Button>
     </form>
   );
 }
