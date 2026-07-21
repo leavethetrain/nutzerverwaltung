@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 export type User = {
+  id: string;
   firstName: string;
   lastName: string;
   birthDate: string;
@@ -13,6 +13,8 @@ export type User = {
 export type UserContextType = {
   users: User[];
   addUser: (user: User) => void;
+  updateUser: (user: User) => void;
+  deleteUser: (id: string) => void;
 };
 
 export const UserContext = createContext<UserContextType | null>(null);
@@ -31,8 +33,20 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
     setUsers((previousUsers) => [...previousUsers, user]);
   }
 
+  function updateUser(updateUser: User) {
+    setUsers((previousUsers) =>
+      previousUsers.map((user) =>
+        user.id === updateUser.id ? updateUser : user,
+      ),
+    );
+  }
+
+  function deleteUser(id: string) {
+    setUsers((previousUsers) => previousUsers.filter((user) => user.id !== id));
+  }
+
   return (
-    <UserContext.Provider value={{ users, addUser }}>
+    <UserContext.Provider value={{ updateUser, users, addUser, deleteUser }}>
       {children}
     </UserContext.Provider>
   );

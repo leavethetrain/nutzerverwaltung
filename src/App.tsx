@@ -16,6 +16,7 @@ function App() {
           { index: true, element: <Index></Index> },
           { path: "overview", element: <Overview></Overview> },
           { path: "create", element: <Create></Create> },
+          { path: "create/:id", element: <Create></Create> },
           { path: "edit", element: <Edit></Edit> },
         ],
       },

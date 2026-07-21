@@ -1,14 +1,18 @@
 import "./create.css";
 
 import Button from "@mui/material/Button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import type { User } from "../../context/UserContext";
 
 function Create() {
   const navigate = useNavigate();
-  const [user, setUser] = useState({
+
+  const [user, setUser] = useState<User>({
+    id: "",
     firstName: "",
     lastName: "",
     birthDate: "",
@@ -16,14 +20,24 @@ function Create() {
     phoneNumber: "",
     email: "",
   });
-
+  const { id } = useParams();
   const context = useContext(UserContext);
 
   if (!context) {
     throw new Error("UserContext fehlt");
   }
 
-  const { addUser } = context;
+  const { addUser, updateUser, users } = context;
+
+  useEffect(() => {
+    if (id) {
+      const savedUser = users.find((user) => user.id === id);
+
+      if (savedUser) {
+        setUser(savedUser);
+      }
+    }
+  }, [id, users]);
 
   function handleUserInput(
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
@@ -37,9 +51,14 @@ function Create() {
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
 
-    addUser(user);
+    if (id) {
+      updateUser(user);
+    } else {
+      addUser({ ...user, id: crypto.randomUUID() });
+    }
 
     setUser({
+      id: "",
       firstName: "",
       lastName: "",
       birthDate: "",
