@@ -4,8 +4,10 @@ import Button from "@mui/material/Button";
 import { useState } from "react";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
+import { useNavigate } from "react-router-dom";
 
 function Create() {
+  const navigate = useNavigate();
   const [user, setUser] = useState({
     firstName: "",
     lastName: "",
@@ -45,6 +47,8 @@ function Create() {
       phoneNumber: "",
       email: "",
     });
+
+    navigate("/overview");
   }
   return (
     <form className="form" onSubmit={handleSubmit}>

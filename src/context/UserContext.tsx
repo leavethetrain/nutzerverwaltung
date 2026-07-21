@@ -1,4 +1,5 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export type User = {
   firstName: string;
@@ -17,7 +18,14 @@ export type UserContextType = {
 export const UserContext = createContext<UserContextType | null>(null);
 
 export function UserProvider({ children }: { children: React.ReactNode }) {
-  const [users, setUsers] = useState<User[]>([]);
+  const [users, setUsers] = useState<User[]>(() => {
+    const saveUser = localStorage.getItem("users");
+    return saveUser ? JSON.parse(saveUser) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("users", JSON.stringify(users));
+  }, [users]);
 
   function addUser(user: User) {
     setUsers((previousUsers) => [...previousUsers, user]);
