@@ -1,0 +1,7 @@
+.user-cards {
+  padding-left: 6rem;
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 20px;
+}

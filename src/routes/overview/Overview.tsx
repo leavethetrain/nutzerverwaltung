@@ -1,6 +1,7 @@
 import UserCard from "../../components/UserCard/UserCard";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
+import "./overview.css";
 
 function Overview() {
   const context = useContext(UserContext);
@@ -11,12 +12,14 @@ function Overview() {
   const { users } = context;
 
   return (
-    <div>
-      <h1>User Übersicht</h1>
+    <div className="user-card-container">
+      <h1>Übersicht</h1>
 
-      {users.map((user) => (
-        <UserCard key={user.email} user={user} />
-      ))}
+      <div className="user-cards">
+        {users.map((user) => (
+          <UserCard key={user.email} user={user} />
+        ))}
+      </div>
     </div>
   );
 }
