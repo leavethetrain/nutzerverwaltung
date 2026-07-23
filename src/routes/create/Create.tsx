@@ -13,12 +13,13 @@ function Create() {
 
   const [user, setUser] = useState<User>({
     id: "",
-    firstName: "",
-    lastName: "",
+    userName: "",
     birthDate: "",
     gender: "",
     phoneNumber: "",
     email: "",
+    website: "",
+    postId: "",
   });
   const { id } = useParams();
   const context = useContext(UserContext);
@@ -59,12 +60,13 @@ function Create() {
 
     setUser({
       id: "",
-      firstName: "",
-      lastName: "",
+      userName: "",
       birthDate: "",
       gender: "",
       phoneNumber: "",
       email: "",
+      website: "",
+      postId: "",
     });
 
     navigate("/overview");
@@ -72,25 +74,13 @@ function Create() {
   return (
     <form className="form" onSubmit={handleSubmit}>
       <div className="form-divs">
-        <label htmlFor="firstName">Vorname</label>
+        <label htmlFor="userName">Username</label>
         <input
           type="text"
-          id="firstName"
-          name="firstName"
-          placeholder="Vorname"
-          value={user.firstName}
-          onChange={handleUserInput}
-          required
-        />
-      </div>
-      <div className="form-divs">
-        <label htmlFor="lastName">Nachname</label>
-        <input
-          type="text"
-          id="lastName"
-          name="lastName"
-          placeholder="Nachname"
-          value={user.lastName}
+          id="userName"
+          name="userName"
+          placeholder="Username"
+          value={user.userName}
           onChange={handleUserInput}
           required
         />
@@ -107,6 +97,7 @@ function Create() {
           required
         />
       </div>
+
       <div className="form-divs">
         <label htmlFor="gender">Geschlecht</label>
         <select
@@ -117,9 +108,9 @@ function Create() {
           required
         >
           <option value="">Bitte auswählen</option>
-          <option value="male">Männlich</option>
-          <option value="female">Weiblich</option>
-          <option value="diverse">Divers</option>
+          <option value="Männlich">Männlich</option>
+          <option value="Weiblich">Weiblich</option>
+          <option value="Divers">Divers</option>
         </select>
       </div>
 
@@ -144,6 +135,32 @@ function Create() {
           value={user.email}
           onChange={handleUserInput}
           placeholder="E-mail"
+          required
+        />
+      </div>
+
+      <div className="form-divs">
+        <label htmlFor="postId">Adresse</label>
+        <input
+          type="text"
+          id="postId"
+          name="postId"
+          placeholder="Adresse"
+          value={user.postId}
+          onChange={handleUserInput}
+          required
+        />
+      </div>
+
+      <div className="form-divs">
+        <label htmlFor="website">Webseite</label>
+        <input
+          type="text"
+          id="website"
+          name="website"
+          placeholder="Webseite"
+          value={user.website}
+          onChange={handleUserInput}
           required
         />
       </div>

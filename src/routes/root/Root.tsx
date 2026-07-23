@@ -16,11 +16,6 @@ function Root() {
             Erstellen
           </Button>
         </Link>
-        <Link to="edit">
-          <Button variant="contained" className="sidebar-item button">
-            Bearbeiten
-          </Button>
-        </Link>
       </nav>
       <main className="main-content">
         <Outlet></Outlet>

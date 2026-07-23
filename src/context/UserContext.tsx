@@ -2,12 +2,13 @@ import { createContext, useEffect, useState } from "react";
 
 export type User = {
   id: string;
-  firstName: string;
-  lastName: string;
+  userName: string;
   birthDate: string;
   gender: string;
   phoneNumber: string;
   email: string;
+  website: string;
+  postId: string;
 };
 
 export type UserContextType = {
