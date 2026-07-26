@@ -6,6 +6,7 @@ function Root() {
   return (
     <div className="root-body">
       <nav className="sidebar-container">
+        <p className="title">User</p>
         <Link to="overview">
           <Button variant="contained" className="sidebar-item button">
             Übersicht

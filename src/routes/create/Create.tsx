@@ -7,6 +7,7 @@ import { UserContext } from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import type { User } from "../../context/UserContext";
+import axios from "axios";
 
 function Create() {
   const navigate = useNavigate();
@@ -20,6 +21,7 @@ function Create() {
     email: "",
     website: "",
     postId: "",
+    image: "",
   });
   const { id } = useParams();
   const context = useContext(UserContext);
@@ -49,13 +51,16 @@ function Create() {
     });
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
 
     if (id) {
       updateUser(user);
     } else {
-      addUser({ ...user, id: crypto.randomUUID() });
+      const response = await axios.get("https://randomuser.me/api/");
+      const image = response.data.results[0].picture.large;
+
+      addUser({ ...user, id: crypto.randomUUID(), image: image });
     }
 
     setUser({
@@ -67,6 +72,7 @@ function Create() {
       email: "",
       website: "",
       postId: "",
+      image: "",
     });
 
     navigate("/overview");

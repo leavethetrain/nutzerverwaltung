@@ -44,6 +44,7 @@
   padding: 7px 15px;
   cursor: pointer;
   font-size: 13px;
+  width: fit-content;
 }
 
 .submit-button:hover {

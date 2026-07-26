@@ -13,8 +13,6 @@ function Overview() {
 
   return (
     <div className="user-card-container">
-      <h1>Übersicht</h1>
-
       <div className="user-cards">
         {users.map((user) => (
           <UserCard key={user.email} user={user} />

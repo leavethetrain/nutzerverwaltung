@@ -9,6 +9,7 @@ export type User = {
   email: string;
   website: string;
   postId: string;
+  image: string;
 };
 
 export type UserContextType = {
