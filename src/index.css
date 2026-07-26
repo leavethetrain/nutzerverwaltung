@@ -1,6 +1,6 @@
 #root {
   width: 100%;
-  max-width: 100%;
+  min-height: 100vh;
   margin: 0 auto;
   text-align: center;
   display: flex;
@@ -9,6 +9,8 @@
 }
 
 body {
+  width: 100%;
+  min-height: 100vh;
   margin: 0;
   font-family:
     system-ui,
@@ -22,4 +24,10 @@ body {
     "Open Sans",
     "Helvetica Neue",
     sans-serif;
+}
+
+html {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
 }

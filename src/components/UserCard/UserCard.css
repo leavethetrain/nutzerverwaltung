@@ -62,3 +62,25 @@ button {
   background-color: transparent;
   border: none;
 }
+
+@media screen and (max-width: 600px) {
+  .user-card {
+    display: flex;
+    flex-direction: column;
+    min-width: unset;
+    width: 100%;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .infos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
